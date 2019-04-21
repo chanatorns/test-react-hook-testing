@@ -7,17 +7,15 @@ function useFillColor() {
     ()=>setLight(!light),
     [light]
   );
-  return [fillColor, light, toggle];
+  return {fillColor, light, toggle};
 }
 
 function LightBox() {
-  let [fillColor, light, toggle] = useFillColor();
-  console.log(light)
+  let {fillColor, light, toggle} = useFillColor();
   return (
     <div className="App">
       <div>
         <p>Switch is {light.toString()}</p>
-        <p>Test</p>
         <Box fillColor={fillColor} />
       </div>
 
