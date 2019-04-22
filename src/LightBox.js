@@ -3,15 +3,13 @@ import React, { useState, useCallback } from "react";
 function useFillColor() {
   const [light, setLight] = useState(false);
   const fillColor = light === true ? "#ffbb73" : "#000000";
-  const toggle = useCallback(
-    ()=>setLight(!light),
-    [light]
-  );
-  return {fillColor, light, toggle};
+  const toggle = ()=>setLight(!light);
+  return {fillColor, light, toggle, setLight};
 }
 
 function LightBox() {
   let {fillColor, light, toggle} = useFillColor();
+
   return (
     <div className="App">
       <div>

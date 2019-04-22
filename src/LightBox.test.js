@@ -5,7 +5,7 @@ import {useFillColor} from './LightBox';
 import { act } from 'react-dom/test-utils';
 import { renderHook, act as actHook } from 'react-hooks-testing-library'
 
-describe('Test Hook', ()=>{
+describe('Test Hook with library', ()=>{
   test('should toggle light', () => {
     const {result} = renderHook(() => useFillColor())
     actHook(() => result.current.toggle())
@@ -13,7 +13,7 @@ describe('Test Hook', ()=>{
   })
 });
 
-describe('Test Component with official tutorial', ()=>{
+describe('Test component with official tutorial', ()=>{
   let container;
 
   beforeEach(() => {
@@ -31,17 +31,21 @@ describe('Test Component with official tutorial', ()=>{
     act(() => {
       ReactDOM.render(<LightBox />, container);
     });
+
     const label = container.querySelector('p');
     const button = container.querySelector('button');
+
     // Test second render and effect
     act(() => {
       button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
     });
+
     expect(label.textContent).toBe('Switch is true');
   
     act(() => {
       button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
     });
+
     expect(label.textContent).toBe('Switch is false');
   });
 });
